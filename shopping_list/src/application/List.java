@@ -10,6 +10,14 @@ public class List {
 	public ArrayList<Item> getItems() {
 		return items;
 	}
+	
+	public boolean addItem(Item addItem) {
+		if(!items.contains(addItem)) {
+			items.add(addItem);
+			return true;
+		}
+		return false;
+	}
 
 	public Item getItem(String name) {
 		for(Item item: items) {
