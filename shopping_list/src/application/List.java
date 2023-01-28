@@ -12,10 +12,11 @@ public class List {
 	}
 	
 	public boolean addItem(Item addItem) {
-		if(!items.contains(addItem)) {
+		if(!hasItem(addItem)) {
 			items.add(addItem);
 			return true;
 		}
+		updateItem(addItem);
 		return false;
 	}
 
@@ -30,6 +31,21 @@ public class List {
 	
 	public Item getItem(Item getItem) {
 		return getItem(getItem.getName());
+	}
+	
+	private boolean hasItem(Item item) {
+		for(Item i: items) {
+			if(i.getName().equals(item.getName()))
+				return true;
+		}
+		return false;
+	}
+	
+	private void updateItem(Item item) {
+		for(int i = 0;i < items.size(); i++) {
+			if(items.get(i).getName().equals(item.getName()))
+				items.get(i).setAmount(item.getAmount()+items.get(i).getAmount());
+		}
 	}
 	
 	@Override
